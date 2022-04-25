@@ -1,4 +1,11 @@
-﻿using System;
+﻿// File name: Grid.cs
+/*Description:Defining the entity: Grid in this model */
+//Tables: Nothing
+//Author: Li Yunmiao (Brandon)
+//Modification Date: 2022/04/08 
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +37,7 @@ namespace Smart_Warehouse_Simulation
 
         public List<Vehicles> Vehicles_Parking { get; set; }
         public List<Vehicles> Vehicles_Via { get; set; }
-        public List<Vehicles> Vehcles_Reserving { get; set; }
+        public Vehicles Vehcles_Reserving { get; set; }
         public List<Vehicles> Vehicles_Pending { get; set; } = new List<Vehicles>();
 
         #endregion
@@ -49,6 +56,9 @@ namespace Smart_Warehouse_Simulation
             this.H = (Math.Abs(this.Row_Index - end.Row_Index) + Math.Abs(this.Column_Index - end.Column_Index))*10;
             this.F = this.G + this.H;
         }
+
+        // Grid Constructor
+        //Two different grids: origin and destination are compulsory 
         public Grid(int row_index, int column_Index)
         {
             this.Row_Index = row_index;

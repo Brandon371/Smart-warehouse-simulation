@@ -1,4 +1,9 @@
-﻿using System;
+﻿// File name: Configuration.cs
+/*Description: Initial condition of the experiment*/
+//Tables: Nothing
+//Author: Li Yunmiao (Brandon)
+//Modification Date: 2022/04/08 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,36 +16,19 @@ namespace Smart_Warehouse_Simulation
         public List<Vehicles> total_vehicles { get; private set; } = new List<Vehicles>();
 
 
-        public void vehcile_generate()
+        public void vehcile_generate(int x)
         {
-            Vehicles AGV_1 = new Vehicles();
-            Vehicles AGV_2 = new Vehicles();
-            Vehicles AGV_3 = new Vehicles();
-            Vehicles AGV_4 = new Vehicles();
-            Vehicles AGV_5 = new Vehicles();
-
-            AGV_1.Status = 0;
-            AGV_2.Status = 0;
-            AGV_3.Status = 0;
-            AGV_4.Status = 0;
-            AGV_5.Status = 0;
-
-            AGV_1.Index = 1;
-            AGV_2.Index = 2;
-            AGV_3.Index = 3;
-            AGV_4.Index = 4;
-            AGV_5.Index = 5;
-
             List<Vehicles> vehicle_list = new List<Vehicles>();
-            vehicle_list.Add(AGV_1);
-            vehicle_list.Add(AGV_2);
-            vehicle_list.Add(AGV_3);
-            vehicle_list.Add(AGV_4);
-            vehicle_list.Add(AGV_5);
+            for (int i = 0; i < x; i++)
+            {
+                Vehicles AGV = new Vehicles(i);
+                AGV.Status = 0;
+                vehicle_list.Add(AGV);
 
+            }
 
             Grid start = new Grid(0, 0);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < x; i++)
             {
                 vehicle_list[i].Parking_Position = start;
             }
@@ -50,28 +38,20 @@ namespace Smart_Warehouse_Simulation
         }
         // HourCounter
 
-        public List<Grid> Map()
+        public List<Grid> Map(int x,int y)
         {
             List<Grid> list = new List<Grid>();
             
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < x; i++)
             {
                 
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < y; j++)
                 {
                     Grid individual = new Grid(i,j);
                     individual.Obstacle = false;
                     list.Add(individual);
                 }
             }
-
-            list[8].Obstacle = true;
-            list[13].Obstacle = true;
-            list[23].Obstacle = true;
-            list[35].Obstacle = true;
-            list[42].Obstacle = true;
-            list[57].Obstacle = true;
-
             return list;
             
         }

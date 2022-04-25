@@ -1,4 +1,10 @@
-﻿using System;
+﻿// File name: Job.cs
+/*Description:Defining the entity: Job in this model */
+//Tables: Nothing
+//Author: Li Yunmiao (Brandon)
+//Modification Date: 2022/04/08 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +26,7 @@ namespace Smart_Warehouse_Simulation
 
         #endregion
 
+        //Two Constructors of Job
         public Job(Grid origin, Grid destination)
         {
             this.origin = origin;

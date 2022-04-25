@@ -1,4 +1,9 @@
-﻿using System;
+﻿// File name: System.cs
+/*Description:System related algorithm, method and statistics lists */
+//Tables: Nothing
+//Author: Li Yunmiao (Brandon)
+//Modification Date: 2022/04/08 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,15 +33,14 @@ namespace Smart_Warehouse_Simulation
 
         public List<Vehicles> Pending_Route { get; set; } = new List<Vehicles>();
 
-
-           
-
-        public void Job_Generate(Random rs)
+        /*Generate the job
+         */
+        public void Job_Generate(Random rs, int x, int y)
         {            
-            int a = rs.Next(0, 9);
-            int b = rs.Next(0, 9);
-            int c = rs.Next(0, 9);
-            int d = rs.Next(0, 9);
+            int a = rs.Next(0, x);
+            int b = rs.Next(0, y);
+            int c = rs.Next(0, x);
+            int d = rs.Next(0, y);
             
             Grid origin = new Grid(a, b);
             Grid destination = new Grid(c,d);
@@ -45,7 +49,7 @@ namespace Smart_Warehouse_Simulation
 
             if (a == c && b == d)
             {
-                Job_Generate(rs);
+                Job_Generate(rs,x,y);
             }
             else
             {
@@ -59,15 +63,17 @@ namespace Smart_Warehouse_Simulation
                 }
                 else
                 {
-                    Job_Generate(rs);
+                    Job_Generate(rs,x,y);
                 }
 
             }
         }
 
+        /*A* algorithm
+         */
         public bool IsvalidGrid(Grid grid,List<Grid> list_1,List<Grid> list_2)
         {
-            if (grid.Row_Index > 9 || grid.Row_Index < 0 || grid.Column_Index > 9 || grid.Column_Index < 0)
+            if (grid.Row_Index > 29 || grid.Row_Index < 0 || grid.Column_Index > 29 || grid.Column_Index < 0)
             {
                 return false;
             }
@@ -188,6 +194,9 @@ namespace Smart_Warehouse_Simulation
 
                 
             }
+
+            
+
             //result.Remove(startPoint);
 
             return result;
